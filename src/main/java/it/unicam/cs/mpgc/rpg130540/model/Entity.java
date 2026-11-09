@@ -53,4 +53,13 @@ public abstract class Entity {
     public int getLifePoints() {
         return this.lifePoints;
     }
+
+    /**
+     * Metodo getter che permette di leggere il valore dell'attacco dell'entità.
+     *
+     * @return
+     */
+    public int getAttack() {
+        return this.attack;
+    }
 }
