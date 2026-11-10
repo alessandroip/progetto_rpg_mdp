@@ -10,12 +10,17 @@ public abstract class Entity {
     protected int attack;
 
     /**
-     * Il costruttore della classe Entity esegue due controlli: uno sul nome che non può essere
-     * vuoto e un altro controllo sui punti vita massimi e sull'attacco che non possono essere negativi.
+     * Il costruttore della classe Entity inizializza un personaggio con i punti vita al massimo.
      *
-     * @param name
-     * @param lifePointsMax
-     * @param attack
+     * Inoltre, esegue due controlli: uno sul nome che non può essere
+     * vuoto e un altro controllo sui punti vita massimi e sull'attacco che non possono essere non positivi.
+     *
+     * @param name          nome del personaggio
+     * @param lifePointsMax punti vita massimi, maggiori di zero
+     * @param attack        valore dell'attacco base, maggiore di zero
+     * @throws IllegalArgumentException se il nome è nullo o privo di
+     *                                  caratteri visibili, oppure se vita massima o attacco
+     *                                  sono minori o uguali a zero
      */
     public Entity(String name, int lifePointsMax, int attack) {
         if (name == null || name.isBlank()) {
@@ -31,12 +36,13 @@ public abstract class Entity {
     }
 
     /**
-     * Metodo che fa ridurre i punti vita all'entità che riceve un attacco.
+     * Metodo che sottrae il danno dai punti vita attuali, fino a un minimo di zero.
      *
-     * E' presente un controllo che rifiuta il danno non strettamente positivo, perché se inserito aumenterebbe la vita
+     * E' presente un controllo che rifiuta il danno negativo, perché se inserito aumenterebbe la vita
      * dato che l'operazione è una differenza (punti vita - danno).
      *
-     * @param damage
+     * @param damage quantità di danno ricevuta, maggiore o uguale a zero
+     * @throws IllegalArgumentException se il danno è negativo
      */
     public void takeDamage(int damage) {
         if (damage < 0) {
@@ -48,7 +54,7 @@ public abstract class Entity {
     /**
      * Metodo getter che permette di leggere i punti vita dell'entità.
      *
-     * @return
+     * @return i punti vita attuali del personaggio
      */
     public int getLifePoints() {
         return this.lifePoints;
@@ -57,7 +63,7 @@ public abstract class Entity {
     /**
      * Metodo getter che permette di leggere il valore dell'attacco dell'entità.
      *
-     * @return
+     * @return il valore dell'attacco base del personaggio
      */
     public int getAttack() {
         return this.attack;
