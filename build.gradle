@@ -34,7 +34,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'it.unicam.cs.mpgc.rpg130540.App'
+    mainClass = 'it.unicam.cs.mpgc.rpg130540.Main'
 }
 
 tasks.named('test') {
