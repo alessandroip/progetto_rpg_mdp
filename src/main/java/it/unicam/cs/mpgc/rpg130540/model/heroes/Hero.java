@@ -3,7 +3,7 @@ package it.unicam.cs.mpgc.rpg130540.model;
 /**
  * Classe Hero (sottoclasse di Entity) che rappresenta le entità protagoniste del gioco.
  */
-public class Hero extends Entity {
+public abstract class Hero extends Entity {
 
     /**
      * Il costruttore della classe Hero crea un eroe con i punti vita al massimo.
