@@ -59,6 +59,22 @@ public abstract class Entity {
         this.lifePoints = Math.max(0, this.lifePoints - damage);
     }
 
+    public void heal(int amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("La cura non può essere negativa");
+        }
+
+        if (!isAlive()) {
+            throw new IllegalStateException("Il personaggio è sconfitto");
+        }
+
+        int recoveredPoints = Math.min(
+                amount, this.lifePointsMax - this.lifePoints
+        );
+
+        this.lifePoints += recoveredPoints;
+    }
+
     /**
      * Metodo getter che permette di leggere i punti vita dell'entità.
      *

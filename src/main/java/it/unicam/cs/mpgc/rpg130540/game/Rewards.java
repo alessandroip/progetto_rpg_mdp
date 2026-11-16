@@ -1,5 +1,12 @@
 package it.unicam.cs.mpgc.rpg130540.game;
 
+import it.unicam.cs.mpgc.rpg130540.items.Artifact;
+import it.unicam.cs.mpgc.rpg130540.items.HealingPotion;
+import it.unicam.cs.mpgc.rpg130540.items.StrengthPotion;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Rewards {
     private int honor;
     private int pendingCoins;
@@ -25,5 +32,12 @@ public class Rewards {
 
     public int getPendingCoins() {
         return this.pendingCoins;
+    }
+
+    public List<Artifact> createRewardOptions() {
+        List<Artifact> options = new ArrayList<>();
+        options.add(new HealingPotion(12));
+        options.add(new StrengthPotion(2));
+        return options;
     }
 }

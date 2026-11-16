@@ -125,4 +125,17 @@ public class Fight {
     public boolean canUseSpecialDefense() {
         return this.turnPhase == TurnPhase.HERO_DEFENSE && !this.defenseUsed;
     }
+
+    public boolean useArtifact(int index) {
+        if (this.turnPhase != TurnPhase.HERO_ACTION) {
+            return false;
+        }
+
+        if (!this.hero.getInventory().use(index, this.hero)) {
+            return false;
+        }
+
+        finishHeroAction(false);
+        return true;
+    }
 }

@@ -4,6 +4,10 @@ import it.unicam.cs.mpgc.rpg130540.model.heroes.Hero;
 import it.unicam.cs.mpgc.rpg130540.model.enemies.Enemy;
 import it.unicam.cs.mpgc.rpg130540.game.enumerators.Phase;
 import it.unicam.cs.mpgc.rpg130540.game.enumerators.TurnPhase;
+import it.unicam.cs.mpgc.rpg130540.items.Artifact;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe GameSession che gestisce le fasi della partita e l'onore.
@@ -17,6 +21,7 @@ public class GameSession {
     private final EncounterFactory encounterFactory;
     private Encounter currentEncounter;
     private int currentLevel = 1;
+    private List<Artifact> rewardOptions = new ArrayList<>();
 
     public GameSession(Hero hero, EncounterFactory encounterFactory) {
         if (hero == null || encounterFactory == null) {
@@ -104,7 +109,8 @@ public class GameSession {
         if (this.currentLevel == this.encounterFactory.getLastLevel()) {
             this.phase = Phase.COMPLETED;
         } else {
-            this.phase = Phase.BETWEEN_ENCOUNTERS;
+            this.rewardOptions = this.rewards.createRewardOptions();
+            this.phase = Phase.REWARD_PENDING;
         }
     }
 
@@ -118,6 +124,48 @@ public class GameSession {
 
         this.currentLevel++;
         startCurrentEncounter();
+    }
+
+    public void chooseReward(int index) {
+        if (this.phase != Phase.REWARD_PENDING) {
+            return;
+        }
+
+        if (index < 0 || index >= this.rewardOptions.size()) {
+            return;
+        }
+
+        this.hero.getInventory().add(this.rewardOptions.get(index));
+        this.rewardOptions.clear();
+        this.phase = Phase.BETWEEN_ENCOUNTERS;
+    }
+
+    public List<String> getRewardNames() {
+        List<String> names = new ArrayList<>();
+
+        for (Artifact artifact : this.rewardOptions) {
+            names.add(artifact.getName());
+        }
+
+        return names;
+    }
+
+    public List<String> getInventoryNames() {
+        return this.hero.getInventory().getItemNames();
+    }
+
+    public boolean useArtifact(int index) {
+        if (this.phase == Phase.FIGHTING) {
+            boolean used = this.fight.useArtifact(index);
+            updateFightOutcome();
+            return used;
+        }
+
+        if (this.phase == Phase.BETWEEN_ENCOUNTERS) {
+            return this.hero.getInventory().use(index, this.hero);
+        }
+
+        return false;
     }
 
     /**
