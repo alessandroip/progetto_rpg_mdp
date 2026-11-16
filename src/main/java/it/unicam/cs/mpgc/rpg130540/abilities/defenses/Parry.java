@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg130540.defenses;
+package it.unicam.cs.mpgc.rpg130540.abilities.defenses;
 
 public class Parry implements Defense {
 
