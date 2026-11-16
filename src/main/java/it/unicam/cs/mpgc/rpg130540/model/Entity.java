@@ -36,6 +36,14 @@ public abstract class Entity {
     }
 
     /**
+     * @return true se il personaggio ha almeno un punto vita,
+     *         false se ha zero punti vita
+     */
+    public boolean isAlive() {
+        return this.lifePoints > 0;
+    }
+
+    /**
      * Metodo che sottrae il danno dai punti vita attuali, fino a un minimo di zero.
      *
      * E' presente un controllo che rifiuta il danno negativo, perché se inserito aumenterebbe la vita
@@ -67,5 +75,13 @@ public abstract class Entity {
      */
     public int getAttack() {
         return this.attack;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getLifePointsMax() {
+        return this.lifePointsMax;
     }
 }

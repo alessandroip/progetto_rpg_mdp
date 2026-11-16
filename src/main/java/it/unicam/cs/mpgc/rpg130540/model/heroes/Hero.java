@@ -1,4 +1,8 @@
-package it.unicam.cs.mpgc.rpg130540.model;
+package it.unicam.cs.mpgc.rpg130540.model.heroes;
+
+import it.unicam.cs.mpgc.rpg130540.model.Entity;
+import it.unicam.cs.mpgc.rpg130540.abilities.Ability;
+import it.unicam.cs.mpgc.rpg130540.abilities.defenses.Defense;
 
 /**
  * Classe Hero (sottoclasse di Entity) che rappresenta le entità protagoniste del gioco.
@@ -18,4 +22,8 @@ public abstract class Hero extends Entity {
     public Hero(String name, int lifePointsMax, int attack) {
         super(name, lifePointsMax, attack);
     }
+
+    public abstract Ability getSpecialAbility();
+
+    public abstract Defense getSpecialDefense();
 }

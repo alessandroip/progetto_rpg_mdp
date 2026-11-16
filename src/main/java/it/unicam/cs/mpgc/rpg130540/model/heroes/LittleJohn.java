@@ -2,15 +2,15 @@ package it.unicam.cs.mpgc.rpg130540.model.heroes;
 
 import it.unicam.cs.mpgc.rpg130540.abilities.Ability;
 import it.unicam.cs.mpgc.rpg130540.abilities.StunningBlow;
-import it.unicam.cs.mpgc.rpg130540.defenses.Defense;
-import it.unicam.cs.mpgc.rpg130540.defenses.Parry;
+import it.unicam.cs.mpgc.rpg130540.abilities.defenses.Defense;
+import it.unicam.cs.mpgc.rpg130540.abilities.defenses.Parry;
 
 /**
  * La classe LittleJohn rappresenta Little John, l'eroe con più punti vita.
  */
 public class LittleJohn extends Hero {
-    private Ability specialAbility = new StunningBlow();
-    public Defense specialDefense = new Parry();
+    private final Ability specialAbility = new StunningBlow();
+    public final Defense specialDefense = new Parry();
 
     /**
      * Il costruttore inizializza Little John con 18 punti vita e 3 punti di attacco base.
