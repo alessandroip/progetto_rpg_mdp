@@ -1,10 +1,9 @@
 package it.unicam.cs.mpgc.rpg130540.game;
 
-import it.unicam.cs.mpgc.rpg130540.model.Hero;
-import it.unicam.cs.mpgc.rpg130540.model.Enemy;
-
-import java.util.ArrayList;
-import java.util.List;
+import it.unicam.cs.mpgc.rpg130540.model.heroes.Hero;
+import it.unicam.cs.mpgc.rpg130540.model.enemies.Enemy;
+import it.unicam.cs.mpgc.rpg130540.game.enumerators.Phase;
+import it.unicam.cs.mpgc.rpg130540.game.enumerators.TurnPhase;
 
 /**
  * Classe GameSession che gestisce le fasi della partita e l'onore.
@@ -13,48 +12,28 @@ public class GameSession {
     private Enemy enemy;
     private Fight fight;
     private Phase phase = Phase.FIGHTING;
-    private int honor;
-    private int pendingCoins;
+    private final Rewards rewards = new Rewards();
     private final Hero hero;
-    private final List<Encounter> encounters;
-    private int encounterIndex;
+    private final EncounterFactory encounterFactory;
+    private Encounter currentEncounter;
+    private int currentLevel = 1;
 
-    /**
-     * Phase indica la fase corrente della sessione di gioco.
-     */
-    public enum Phase {
-        FIGHTING,
-        DONATION_PENDING,
-        RETRY_PENDING,
-        BETWEEN_ENCOUNTERS,
-        COMPLETED
-    }
-
-    /**
-     * Il costruttore della classe GameSession avvia la partita dal primo incontro.
-     *
-     * Esegue un controllo sul numero degli incontri che non può essere zero.
-     *
-     * @param hero eroe scelto per tutta la partita
-     * @param encounters incontri da affrontare in ordine
-     * @throws IllegalArgumentException se la lista è vuota
-     */
-    public GameSession(Hero hero, List<Encounter> encounters) {
-        if (encounters.isEmpty()) {
-            throw new IllegalArgumentException("Serve almeno un incontro");
+    public GameSession(Hero hero, EncounterFactory encounterFactory) {
+        if (hero == null || encounterFactory == null) {
+            throw new IllegalArgumentException("Eroe e factory sono obbligatori");
         }
+
         this.hero = hero;
-        this.encounters = new ArrayList<>(encounters);
+        this.encounterFactory = encounterFactory;
         startCurrentEncounter();
     }
 
-    /**
-     * Metodo startCurrentEncounter() che crea il nemico e il combattimento per l'incontro corrente.
-     */
     private void startCurrentEncounter() {
-        Encounter encounter = encounters.get(encounterIndex);
-        this.enemy = encounter.createEnemy();
-        this.fight = new Fight(hero, enemy);
+        this.currentEncounter =
+                this.encounterFactory.createEncounter(this.currentLevel);
+
+        this.enemy = this.currentEncounter.getEnemy();
+        this.fight = new Fight(this.hero, this.enemy);
         this.phase = Phase.FIGHTING;
     }
 
@@ -71,17 +50,74 @@ public class GameSession {
         if (phase != Phase.FIGHTING) {
             return;
         }
+        this.fight.attack();
+        updateFightOutcome();
+    }
 
-        fight.attack();
-        if (fight.isEnded()) {
-            if (enemy.getLifePoints() == 0) {
-                honor++;
-                pendingCoins = encounters.get(encounterIndex).getRewardCoins();
-                phase = Phase.DONATION_PENDING;
-            } else {
-                phase = Phase.RETRY_PENDING;
-            }
+    public void useSpecialAbility() {
+        if (this.phase != Phase.FIGHTING) {
+            return;
         }
+        this.fight.useSpecialAbility();
+        updateFightOutcome();
+    }
+
+    public void receiveAttack() {
+        if (this.phase != Phase.FIGHTING) {
+            return;
+        }
+        this.fight.receiveAttack();
+        updateFightOutcome();
+    }
+
+    public void useSpecialDefense() {
+        if (this.phase != Phase.FIGHTING) {
+            return;
+        }
+        this.fight.useSpecialDefense();
+        updateFightOutcome();
+    }
+
+    private void updateFightOutcome() {
+        if (!this.fight.isEnded()) {
+            return;
+        }
+        if (!this.enemy.isAlive()) {
+            this.rewards.registerVictory(this.currentEncounter.getRewardCoins());
+            this.phase = Phase.DONATION_PENDING;
+        } else {
+            this.phase = Phase.RETRY_PENDING;
+        }
+    }
+
+    public TurnPhase getTurnPhase() {
+        return this.fight.getTurnPhase();
+    }
+
+    public void donateLoot() {
+        if (this.phase != Phase.DONATION_PENDING) {
+            return;
+        }
+
+        this.rewards.donateLoot();
+
+        if (this.currentLevel == this.encounterFactory.getLastLevel()) {
+            this.phase = Phase.COMPLETED;
+        } else {
+            this.phase = Phase.BETWEEN_ENCOUNTERS;
+        }
+    }
+
+    /**
+     * Avvia l'incontro successivo quando la donazione è conclusa e rimangono avversari da affrontare.
+     */
+    public void startNextEncounter() {
+        if (this.phase != Phase.BETWEEN_ENCOUNTERS) {
+            return;
+        }
+
+        this.currentLevel++;
+        startCurrentEncounter();
     }
 
     /**
@@ -99,43 +135,59 @@ public class GameSession {
      * @return i punti onore ottenuti vincendo gli incontri
      */
     public int getHonor() {
-        return honor;
+        return this.rewards.getHonor();
     }
 
-    /**
-     * Il metodo donateLoot() dona il bottino dell'incontro appena vinto.
-     *
-     * Se restano altri incontri, la sessione passa a BETWEEN_ENCOUNTERS.
-     * Dopo la donazione del bottino dell'ultimo incontro, passa a COMPLETED.
-     */
-    public void donateLoot() {
-        if (phase != Phase.DONATION_PENDING) {
-            return;
-        }
-        pendingCoins = 0;
-        if (encounterIndex == encounters.size() - 1) {
-            phase = Phase.COMPLETED;
-        } else {
-            phase = Phase.BETWEEN_ENCOUNTERS;
-        }
-    }
-
-    /**
-     * Avvia l'incontro successivo quando la donazione è conclusa e rimangono avversari da affrontare.
-     */
-    public void startNextEncounter() {
-        if (phase != Phase.BETWEEN_ENCOUNTERS) {
-            return;
-        }
-        encounterIndex++;
-        startCurrentEncounter();
-    }
     /**
      * Metodo getter che determina il bottino non donato.
      *
      * @return le monete del bottino ancora da donare
      */
     public int getPendingCoins() {
-        return pendingCoins;
+        return this.rewards.getPendingCoins();
+    }
+
+    public String getHeroName() {
+        return this.hero.getName();
+    }
+
+    public int getHeroLifePoints() {
+        return this.hero.getLifePoints();
+    }
+
+    public String getEnemyName() {
+        return this.enemy.getName();
+    }
+
+    public int getEnemyLifePoints() {
+        return this.enemy.getLifePoints();
+    }
+
+    public int getCurrentLevel() {
+        return this.currentLevel;
+    }
+
+    public String getAbilityName() {
+        return this.hero.getSpecialAbility().getName();
+    }
+
+    public String getDefenseName() {
+        return this.hero.getSpecialDefense().getName();
+    }
+
+    public String getPendingAttackName() {
+        return this.fight.getPendingAttackName();
+    }
+
+    public int getPendingDamage() {
+        return this.fight.getPendingDamage();
+    }
+
+    public boolean canUseSpecialAbility() {
+        return this.phase == Phase.FIGHTING && this.fight.canUseSpecialAbility();
+    }
+
+    public boolean canUseSpecialDefense() {
+        return this.phase == Phase.FIGHTING && this.fight.canUseSpecialDefense();
     }
 }
