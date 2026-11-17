@@ -35,4 +35,8 @@ public class Inventory {
         }
         return names;
     }
+
+    public List<Artifact> copyItems() {
+        return new ArrayList<>(this.items);
+    }
 }
