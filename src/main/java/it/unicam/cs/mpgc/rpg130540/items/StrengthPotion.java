@@ -28,4 +28,8 @@ public class StrengthPotion implements Artifact {
         hero.increaseAttack(this.bonus);
         return true;
     }
+
+    public int getBonus() {
+        return this.bonus;
+    }
 }

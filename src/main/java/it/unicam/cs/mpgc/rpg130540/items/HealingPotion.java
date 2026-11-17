@@ -28,4 +28,8 @@ public class HealingPotion implements Artifact {
         hero.heal(this.healingPoints);
         return true;
     }
+
+    public int getHealingPoints() {
+        return this.healingPoints;
+    }
 }
