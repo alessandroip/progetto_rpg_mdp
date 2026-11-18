@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" spacing="24.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.mpgc.rpg130540.ui.controllers.HeroSelectionController">
+   <padding>
+      <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+   </padding>
+   <children>
+      <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Scegli il tuo eroe!" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="330.0" spacing="12.0" style="-fx-border-color: #888; -fx-border-radius: 6; -fx-background-color: #f5f1e8; -fx-background-radius: 6;">
+               <padding>
+                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+               </padding>
+               <children>
+                  <ImageView fitHeight="168.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                     <image>
+                        <Image url="@../images/heroes/robin-hood.png" />
+                     </image></ImageView>
+                  <Label fx:id="robinName" text="Robin Hood" />
+                  <Label fx:id="robinLife" text="Punti vita: 12" />
+                  <Label fx:id="robinAttack" text="Attacco base: 5" />
+                  <Label fx:id="robinAbility" text="Abilità: Tiro di precisione" />
+                  <Label fx:id="robinDefense" text="Difesa: Schivata" />
+                  <Label text="Abilità e difesa: un uso ciascuna per incontro" wrapText="true" />
+                  <Button mnemonicParsing="false" onAction="#onChooseRobin" text="Scegli Robin Hood" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" layoutX="196.0" layoutY="10.0" prefHeight="200.0" prefWidth="330.0" spacing="12.0" style="-fx-border-color: #888; -fx-border-radius: 6; -fx-background-color: #f5f1e8; -fx-background-radius: 6;">
+               <padding>
+                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+               </padding>
+               <children>
+                  <ImageView fitHeight="168.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                     <image>
+                        <Image url="@../images/heroes/little-john.png" />
+                     </image></ImageView>
+                  <Label fx:id="johnName" text="Little John" />
+                  <Label fx:id="johnLife" text="Punti vita: 18" />
+                  <Label fx:id="johnAttack" text="Attacco base: 3" />
+                  <Label fx:id="johnAbility" text="Abilità: Colpo stordente" />
+                  <Label fx:id="johnDefense" text="Difesa: Parata" />
+                  <Label text="Abilità e difesa: un uso ciascuna per incontro" wrapText="true" />
+                  <Button mnemonicParsing="false" onAction="#onChooseJohn" text="Scegli Little John" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
