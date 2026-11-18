@@ -1,0 +1,17 @@
+{
+  "version" : 1,
+  "hero" : {
+    "heroType" : "ROBIN_HOOD",
+    "lifePoints" : 5,
+    "attack" : 5,
+    "inventory" : [ {
+      "type" : "STRENGTH_POTION",
+      "power" : 2
+    }, {
+      "type" : "HEALING_POTION",
+      "power" : 12
+    } ]
+  },
+  "honor" : 3,
+  "completedLevel" : 3
+}
