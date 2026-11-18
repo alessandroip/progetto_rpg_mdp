@@ -40,4 +40,13 @@ public class Rewards {
         options.add(new StrengthPotion(2));
         return options;
     }
+
+    public void restoreHonor(int savedHonor) {
+        if (savedHonor < 0) {
+            throw new IllegalArgumentException("L'onore non può essere negativo");
+        }
+
+        this.honor = savedHonor;
+        this.pendingCoins = 0;
+    }
 }

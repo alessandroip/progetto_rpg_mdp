@@ -3,13 +3,13 @@ package it.unicam.cs.mpgc.rpg130540.model.heroes;
 import it.unicam.cs.mpgc.rpg130540.model.Entity;
 import it.unicam.cs.mpgc.rpg130540.abilities.Ability;
 import it.unicam.cs.mpgc.rpg130540.abilities.defenses.Defense;
-import it.unicam.cs.mpgc.rpg130540.items.Inventory;
+import it.unicam.cs.mpgc.rpg130540.items.InventoryManager;
 
 /**
  * Classe Hero (sottoclasse di Entity) che rappresenta le entità protagoniste del gioco.
  */
 public abstract class Hero extends Entity {
-    private final Inventory inventory = new Inventory();
+    private final InventoryManager inventory = new InventoryManager();
 
     /**
      * Il costruttore della classe Hero crea un eroe con i punti vita al massimo.
@@ -29,7 +29,7 @@ public abstract class Hero extends Entity {
 
     public abstract Defense getSpecialDefense();
 
-    public Inventory getInventory() {
+    public InventoryManager getInventory() {
         return this.inventory;
     }
 
@@ -39,5 +39,18 @@ public abstract class Hero extends Entity {
         }
 
         this.attack = Math.addExact(this.attack, bonus);
+    }
+
+    public void restoreCombatStats(int savedLifePoints, int savedAttack) {
+        if (savedLifePoints <= 0 || savedLifePoints > this.lifePointsMax) {
+            throw new IllegalArgumentException("Punti vita salvati non validi");
+        }
+
+        if (savedAttack <= 0) {
+            throw new IllegalArgumentException("Attacco salvato non valido");
+        }
+
+        this.lifePoints = savedLifePoints;
+        this.attack = savedAttack;
     }
 }

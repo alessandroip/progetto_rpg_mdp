@@ -33,6 +33,44 @@ public class GameSession {
         startCurrentEncounter();
     }
 
+    public GameSession(
+            Hero hero,
+            EncounterFactory encounterFactory,
+            int completedLevel,
+            int savedHonor
+    ) {
+        if (hero == null || encounterFactory == null || !hero.isAlive()) {
+            throw new IllegalArgumentException("Eroe o factory non validi");
+        }
+
+        if (completedLevel < 1
+                || completedLevel >= encounterFactory.getLastLevel()) {
+            throw new IllegalArgumentException(
+                    "Il salvataggio deve riferirsi a un punto tra gli incontri"
+            );
+        }
+
+        if (savedHonor != completedLevel) {
+            throw new IllegalArgumentException(
+                    "Onore e livello completato non sono coerenti"
+            );
+        }
+
+        this.hero = hero;
+        this.encounterFactory = encounterFactory;
+        this.currentLevel = completedLevel;
+
+        this.currentEncounter =
+                this.encounterFactory.createEncounter(this.currentLevel);
+        this.enemy = this.currentEncounter.getEnemy();
+
+        this.enemy.takeDamage(this.enemy.getLifePoints());
+        this.fight = new Fight(this.hero, this.enemy);
+
+        this.rewards.restoreHonor(savedHonor);
+        this.phase = Phase.BETWEEN_ENCOUNTERS;
+    }
+
     private void startCurrentEncounter() {
         this.currentEncounter =
                 this.encounterFactory.createEncounter(this.currentLevel);
@@ -237,5 +275,17 @@ public class GameSession {
 
     public boolean canUseSpecialDefense() {
         return this.phase == Phase.FIGHTING && this.fight.canUseSpecialDefense();
+    }
+
+    public boolean canSave() {
+        return this.phase == Phase.BETWEEN_ENCOUNTERS;
+    }
+
+    public int getHeroAttack() {
+        return this.hero.getAttack();
+    }
+
+    public List<Artifact> getInventoryItems() {
+        return this.hero.getInventory().copyItems();
     }
 }

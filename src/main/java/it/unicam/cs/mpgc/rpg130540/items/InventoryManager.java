@@ -5,7 +5,7 @@ import it.unicam.cs.mpgc.rpg130540.model.heroes.Hero;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Inventory {
+public class InventoryManager {
     private final List<Artifact> items = new ArrayList<>();
 
     public void add(Artifact artifact) {
