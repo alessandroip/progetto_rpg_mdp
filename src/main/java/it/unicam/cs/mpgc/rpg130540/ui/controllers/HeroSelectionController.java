@@ -16,6 +16,7 @@ public class HeroSelectionController {
 
     private final Hero robinHood = new RobinHood();
     private final Hero littleJohn = new LittleJohn();
+    private Runnable onBackToMenu;
 
     private Consumer<Hero> onHeroSelected;
 
@@ -91,14 +92,15 @@ public class HeroSelectionController {
         );
     }
 
-    public void configure(Consumer<Hero> onHeroSelected) {
-        if (onHeroSelected == null) {
+    public void configure(Consumer<Hero> onHeroSelected, Runnable onBackToMenu) {
+        if (onHeroSelected == null || onBackToMenu == null) {
             throw new IllegalArgumentException(
-                    "L'azione di scelta dell'eroe è obbligatoria"
+                    "Le azioni della schermata sono obbligatorie"
             );
         }
 
         this.onHeroSelected = onHeroSelected;
+        this.onBackToMenu = onBackToMenu;
     }
 
     @FXML
@@ -109,5 +111,10 @@ public class HeroSelectionController {
     @FXML
     private void onChooseJohn() {
         this.onHeroSelected.accept(this.littleJohn);
+    }
+
+    @FXML
+    private void onBackToMenu() {
+        this.onBackToMenu.run();
     }
 }

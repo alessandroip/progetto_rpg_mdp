@@ -16,7 +16,7 @@ import java.util.function.Consumer;
  */
 public class HeroSelection {
 
-    public Scene createScene(Consumer<Hero> onHeroSelected) {
+    public Scene createScene(Consumer<Hero> onHeroSelected, Runnable onBackToMenu) {
         URL resource = getClass().getResource(
                 "/fxml/HeroSelection.fxml"
         );
@@ -35,7 +35,7 @@ public class HeroSelection {
             HeroSelectionController controller =
                     loader.getController();
 
-            controller.configure(onHeroSelected);
+            controller.configure(onHeroSelected, onBackToMenu);
 
             return new Scene(root, 750, 600);
 

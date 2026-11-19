@@ -54,5 +54,6 @@
             </VBox>
          </children>
       </HBox>
+      <Button mnemonicParsing="false" onAction="#onBackToMenu" text="Torna al menu" />
    </children>
 </VBox>

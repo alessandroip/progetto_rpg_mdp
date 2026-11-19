@@ -49,10 +49,17 @@ public class SceneManager {
     public void showHeroSelection() {
         HeroSelection selection = new HeroSelection();
 
-        this.stage.setScene(selection.createScene(hero -> {
-            GameSession session = new GameSession(hero, this.encounterFactory);
-            showGame(session);
-        }));
+        this.stage.setScene(selection.createScene(
+                hero -> {
+                    GameSession session = new GameSession(
+                            hero,
+                            this.encounterFactory
+                    );
+
+                    showGame(session);
+                },
+                () -> showMenu()
+        ));
     }
 
     /**
