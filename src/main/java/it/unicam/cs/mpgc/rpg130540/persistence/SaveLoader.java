@@ -8,6 +8,8 @@ import it.unicam.cs.mpgc.rpg130540.items.StrengthPotion;
 import it.unicam.cs.mpgc.rpg130540.model.heroes.Hero;
 import it.unicam.cs.mpgc.rpg130540.model.heroes.LittleJohn;
 import it.unicam.cs.mpgc.rpg130540.model.heroes.RobinHood;
+import it.unicam.cs.mpgc.rpg130540.items.Blowpipe;
+import it.unicam.cs.mpgc.rpg130540.items.WildHealingPlant;
 
 /**
  * Ricostruisce una partita dai dati già validati.
@@ -72,7 +74,11 @@ public class SaveLoader {
 
             case "STRENGTH_POTION":
                 return new StrengthPotion(item.power);
+            case "BLOWPIPE":
+                return new Blowpipe(item.power);
 
+            case "WILD_HEALING_PLANT":
+                return new WildHealingPlant(item.power);
             default:
                 throw new IllegalArgumentException(
                         "Oggetto non riconosciuto"

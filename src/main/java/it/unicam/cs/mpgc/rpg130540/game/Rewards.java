@@ -3,6 +3,8 @@ package it.unicam.cs.mpgc.rpg130540.game;
 import it.unicam.cs.mpgc.rpg130540.items.Artifact;
 import it.unicam.cs.mpgc.rpg130540.items.HealingPotion;
 import it.unicam.cs.mpgc.rpg130540.items.StrengthPotion;
+import it.unicam.cs.mpgc.rpg130540.items.Blowpipe;
+import it.unicam.cs.mpgc.rpg130540.items.WildHealingPlant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +38,10 @@ public class Rewards {
 
     public List<Artifact> createRewardOptions() {
         List<Artifact> options = new ArrayList<>();
-        options.add(new HealingPotion(12));
         options.add(new StrengthPotion(2));
+        options.add(new Blowpipe(1));
+        options.add(new HealingPotion(12));
+        options.add(new WildHealingPlant(3));
         return options;
     }
 

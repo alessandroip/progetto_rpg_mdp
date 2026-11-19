@@ -113,7 +113,9 @@ public class SaveDataValidator {
         }
 
         if (!"HEALING_POTION".equals(item.type)
-                && !"STRENGTH_POTION".equals(item.type)) {
+                && !"STRENGTH_POTION".equals(item.type)
+                && !"BLOWPIPE".equals(item.type)
+                && !"WILD_HEALING_PLANT".equals(item.type)) {
             throw new IllegalArgumentException(
                     "Tipo di oggetto non riconosciuto"
             );

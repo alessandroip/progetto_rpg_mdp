@@ -4,6 +4,8 @@ import it.unicam.cs.mpgc.rpg130540.game.GameSession;
 import it.unicam.cs.mpgc.rpg130540.items.Artifact;
 import it.unicam.cs.mpgc.rpg130540.items.HealingPotion;
 import it.unicam.cs.mpgc.rpg130540.items.StrengthPotion;
+import it.unicam.cs.mpgc.rpg130540.items.Blowpipe;
+import it.unicam.cs.mpgc.rpg130540.items.WildHealingPlant;
 
 import java.util.ArrayList;
 
@@ -58,6 +60,22 @@ public class GameSaver {
 
             item.type = "STRENGTH_POTION";
             item.power = potion.getBonus();
+            return item;
+        }
+
+        if (artifact instanceof Blowpipe) {
+            Blowpipe blowpipe = (Blowpipe) artifact;
+
+            item.type = "BLOWPIPE";
+            item.power = blowpipe.getBonus();
+            return item;
+        }
+
+        if (artifact instanceof WildHealingPlant) {
+            WildHealingPlant plant = (WildHealingPlant) artifact;
+
+            item.type = "WILD_HEALING_PLANT";
+            item.power = plant.getHealingPoints();
             return item;
         }
 
