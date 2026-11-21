@@ -8,82 +8,79 @@ import it.unicam.cs.mpgc.rpg130540.model.heroes.RobinHood;
 import java.util.List;
 
 /**
- * Verifica che i dati salvati siano coerenti con le regole della partita prima della ricostruzione.
+ * Verifica la coerenza dei dati salvati con le regole attuali prima della ricostruzione. Non
+ * dimostra che i valori siano stati ottenuti mediante una sequenza autentica di azioni di gioco.
  */
 public class SaveDataValidator {
 
+    /**
+     * Factory degli incontri.
+     */
     private final EncounterFactory encounterFactory;
 
+    /**
+     * Configura il validatore con la factory che definisce i livelli disponibili.
+     *
+     * @param encounterFactory factory usata per creare gli incontri, non nulla
+     * @throws IllegalArgumentException se la factory è nulla
+     */
     public SaveDataValidator(EncounterFactory encounterFactory) {
         if (encounterFactory == null) {
             throw new IllegalArgumentException(
                     "La factory è obbligatoria"
             );
         }
-
         this.encounterFactory = encounterFactory;
     }
 
+    /**
+     * Controlla versione 1, eroe vivo, statistiche ammesse, livello tra il primo e il
+     * penultimo, onore coerente e inventario completo di oggetti riconosciuti. Un inventario
+     * vuoto è valido. Un inventario assente non lo è.
+     *
+     * @param data dati da verificare
+     * @throws IllegalArgumentException se il contenitore è nullo o una delle condizioni di
+     *                                  coerenza non è rispettata
+     */
     public void validate(SaveData data) {
         if (data == null) {
-            throw new IllegalArgumentException(
-                    "Salvataggio mancante"
-            );
+            throw new IllegalArgumentException("Salvataggio mancante");
         }
 
         if (data.getVersion() != 1) {
-            throw new IllegalArgumentException(
-                    "Versione del salvataggio non supportata"
-            );
+            throw new IllegalArgumentException("Versione del salvataggio non supportata");
         }
 
         HeroSave savedHero = data.getHero();
 
         if (savedHero == null) {
-            throw new IllegalArgumentException(
-                    "Dati dell'eroe mancanti"
-            );
+            throw new IllegalArgumentException("Dati dell'eroe mancanti");
         }
 
-        Hero referenceHero =
-                createReferenceHero(savedHero.heroType);
+        Hero referenceHero = createReferenceHero(savedHero.heroType);
 
-        if (savedHero.lifePoints <= 0
-                || savedHero.lifePoints
-                > referenceHero.getLifePointsMax()) {
-            throw new IllegalArgumentException(
-                    "Punti vita salvati non validi"
-            );
+        if (savedHero.lifePoints <= 0 || savedHero.lifePoints > referenceHero.getLifePointsMax()) {
+            throw new IllegalArgumentException("Punti vita salvati non validi");
         }
 
         if (savedHero.attack < referenceHero.getAttack()) {
-            throw new IllegalArgumentException(
-                    "Attacco salvato inferiore all'attacco iniziale"
-            );
+            throw new IllegalArgumentException("Attacco salvato inferiore all'attacco iniziale");
         }
 
         int completedLevel = data.getCompletedLevel();
 
-        if (completedLevel < 1
-                || completedLevel
-                >= this.encounterFactory.getLastLevel()) {
-            throw new IllegalArgumentException(
-                    "Il livello salvato deve essere tra due incontri"
-            );
+        if (completedLevel < 1 || completedLevel >= this.encounterFactory.getLastLevel()) {
+            throw new IllegalArgumentException("Il livello salvato deve essere tra due incontri");
         }
 
         if (data.getHonor() != completedLevel) {
-            throw new IllegalArgumentException(
-                    "Onore e livello completato non sono coerenti"
-            );
+            throw new IllegalArgumentException("Onore e livello completato non sono coerenti");
         }
 
         List<ItemSave> inventory = savedHero.inventory;
 
         if (inventory == null) {
-            throw new IllegalArgumentException(
-                    "Inventario mancante"
-            );
+            throw new IllegalArgumentException("Inventario mancante");
         }
 
         for (ItemSave item : inventory) {
@@ -91,40 +88,38 @@ public class SaveDataValidator {
         }
     }
 
+    /**
+     * Crea un eroe iniziale da usare come riferimento per vita massima e attacco minimo.
+     *
+     * @param type identificativo dell'eroe salvato
+     * @return eroe di riferimento, non quello poi usato nella sessione caricata
+     * @throws IllegalArgumentException se il tipo non è riconosciuto
+     */
     private Hero createReferenceHero(String type) {
         if ("ROBIN_HOOD".equals(type)) {
             return new RobinHood();
         }
-
         if ("LITTLE_JOHN".equals(type)) {
             return new LittleJohn();
         }
-
-        throw new IllegalArgumentException(
-                "Eroe non riconosciuto"
-        );
+        throw new IllegalArgumentException("Eroe non riconosciuto");
     }
 
+    /**
+     * Verifica presenza, identificativo supportato e potenza positiva di un manufatto salvato.
+     *
+     * @param item elemento da verificare
+     * @throws IllegalArgumentException se il manufatto è nullo, sconosciuto o ha potenza non positiva
+     */
     private void validateItem(ItemSave item) {
         if (item == null) {
-            throw new IllegalArgumentException(
-                    "L'inventario contiene un oggetto nullo"
-            );
+            throw new IllegalArgumentException("L'inventario contiene un oggetto nullo");
         }
-
-        if (!"HEALING_POTION".equals(item.type)
-                && !"STRENGTH_POTION".equals(item.type)
-                && !"BLOWPIPE".equals(item.type)
-                && !"WILD_HEALING_PLANT".equals(item.type)) {
-            throw new IllegalArgumentException(
-                    "Tipo di oggetto non riconosciuto"
-            );
+        if (!"HEALING_POTION".equals(item.type) && !"STRENGTH_POTION".equals(item.type) && !"BLOWPIPE".equals(item.type) && !"WILD_HEALING_PLANT".equals(item.type)) {
+            throw new IllegalArgumentException("Tipo di oggetto non riconosciuto");
         }
-
         if (item.power <= 0) {
-            throw new IllegalArgumentException(
-                    "La potenza dell'oggetto deve essere positiva"
-            );
+            throw new IllegalArgumentException("La potenza dell'oggetto deve essere positiva");
         }
     }
 }
