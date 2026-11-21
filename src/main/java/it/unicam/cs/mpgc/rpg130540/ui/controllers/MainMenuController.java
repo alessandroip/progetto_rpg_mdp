@@ -4,14 +4,25 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 
 /**
- * Gestisce le azioni del menu principale.
+ * Gestisce i pulsanti del menu principale eseguendo le azioni configurate
+ * dall'applicazione. Non implementa le regole di creazione o caricamento della partita.
  */
 public class MainMenuController {
+    /**
+     * Azione di avvio di una nuova partita.
+     */
     private Runnable newGame;
+    /**
+     * Azione di caricamento dal menu.
+     */
     private Runnable loadGame;
 
     /**
-     * Collega le azioni definite dall'applicazione ai pulsanti del menu.
+     * Assegna le azioni del menu dopo il caricamento FXML.
+     *
+     * @param newGame azione che avvia una nuova partita, non nulla
+     * @param loadGame azione che carica una partita, non nulla
+     * @throws IllegalArgumentException se almeno una dipendenza o azione richiesta è nulla
      */
     public void configure(Runnable newGame, Runnable loadGame) {
         if (newGame == null || loadGame == null) {
@@ -22,7 +33,7 @@ public class MainMenuController {
     }
 
     /**
-     * @FXML permette al caricatore FXML di accedere a questi metodi privati.
+     * Esegue l'azione di avvio di una nuova partita.
      */
     @FXML
     public void onNewGame() {
