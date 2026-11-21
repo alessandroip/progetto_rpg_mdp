@@ -15,7 +15,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.mpgc.rpg130540.ui.controllers.GameController">
    <padding>
-      <Insets bottom="80.0" left="24.0" right="24.0" top="24.0" />
+      <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
    </padding>
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="24.0" BorderPane.alignment="TOP_LEFT">
@@ -28,30 +28,37 @@
             </VBox>
             <VBox maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="12.0" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="40.0" VBox.vgrow="NEVER">
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="40.0" VBox.vgrow="NEVER">
                      <children>
                         <VBox minWidth="-Infinity" prefHeight="200.0">
                            <children>
-                              <Label fx:id="levelLabel" minWidth="-Infinity" style="-fx-font-size: 28; -fx-font-weight: bold;" text="Livello 1" />
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" spacing="12.0" HBox.hgrow="NEVER">
-                           <children>
-                              <Label fx:id="heroLabel" text="Robin Hood - PV: 12" />
-                              <Label fx:id="rewardsLabel" text="Onore: 0 - Bottino da donare: 0" />
+                              <Label fx:id="levelLabel" minWidth="-Infinity" style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: #276738;" text="Livello 1" />
                            </children>
                            <HBox.margin>
-                              <Insets left="100.0" top="20.0" />
+                              <Insets right="50.0" />
                            </HBox.margin>
                         </VBox>
-                        <VBox minWidth="-Infinity" prefHeight="200.0">
+                        <GridPane hgap="40.0" minWidth="-Infinity" vgap="12.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" />
+                            <ColumnConstraints hgrow="SOMETIMES" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
                            <children>
-                              <Label fx:id="enemyLabel" text="Guardia semplice - PV: 10" />
+                              <Label style="-fx-font-size: 22; -fx-font-weight: bold;" text="Eroe" />
+                              <Label fx:id="heroLabel" maxWidth="1.7976931348623157E308" minWidth="-Infinity" style="-fx-font-size: 16;" text="Robin Hood - PV: 12" GridPane.rowIndex="1" GridPane.valignment="BASELINE" />
+                              <Label fx:id="rewardsLabel" maxWidth="1.7976931348623157E308" minWidth="-Infinity" text="Onore: 0 - Bottino da donare: 0" GridPane.rowIndex="2" />
+                              <Label style="-fx-font-size: 22; -fx-font-weight: bold;" text="Nemico" GridPane.columnIndex="1" />
+                              <Label fx:id="enemyLabel" maxWidth="1.7976931348623157E308" minWidth="-Infinity" style="-fx-font-size: 16;" text="Guardia semplice - PV: 10" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BASELINE" />
                            </children>
-                           <HBox.margin>
-                              <Insets left="30.0" top="20.0" />
-                           </HBox.margin>
-                        </VBox>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
                      </children>
                   </HBox>
                   <Label fx:id="messageLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-font-weight: bold;" text="Scegli un attacco o la tua abilità" wrapText="true" />
@@ -68,80 +75,89 @@
       </HBox>
    </center>
    <bottom>
-      <GridPane hgap="12.0" BorderPane.alignment="CENTER">
-         <columnConstraints>
-            <ColumnConstraints percentWidth="16.6666667" />
-            <ColumnConstraints percentWidth="16.6666667" />
-            <ColumnConstraints percentWidth="16.6666667" />
-            <ColumnConstraints percentWidth="16.6666667" />
-            <ColumnConstraints percentWidth="16.6666667" />
-            <ColumnConstraints percentWidth="16.6666667" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints fillHeight="true" valignment="TOP"/>
-         </rowConstraints>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="16.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" spacing="10.0" style="-fx-border-color: #333333; -fx-border-width: 2; -fx-border-radius: 6; -fx-background-color: #f5f1e8; -fx-background-radius: 6;" GridPane.valignment="TOP">
-               <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </padding>
+            <GridPane hgap="12.0">
+               <columnConstraints>
+                  <ColumnConstraints percentWidth="16.6666667" />
+                  <ColumnConstraints percentWidth="16.6666667" />
+                  <ColumnConstraints percentWidth="16.6666667" />
+                  <ColumnConstraints percentWidth="16.6666667" />
+                  <ColumnConstraints percentWidth="16.6666667" />
+                  <ColumnConstraints percentWidth="16.6666667" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints fillHeight="true" valignment="TOP" />
+               </rowConstraints>
                <children>
-                  <Label style="-fx-font-weight: bold;" text="Attacco" />
-                  <Button fx:id="attackButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAttack" text="Attacca" wrapText="true" />
-                  <Button fx:id="abilityButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onUseAbility" text="Abilità speciale" wrapText="true" />
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" spacing="10.0" style="-fx-border-color: #333333; -fx-border-width: 2; -fx-border-radius: 6; -fx-background-color: #f5f1e8; -fx-background-radius: 6;" GridPane.valignment="TOP">
+                     <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </padding>
+                     <children>
+                        <Label style="-fx-font-weight: bold;" text="Attacco" />
+                        <Button fx:id="attackButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAttack" text="Attacca" wrapText="true" />
+                        <Button fx:id="abilityButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onUseAbility" text="Abilità speciale" wrapText="true" />
+                     </children>
+                  </VBox>
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" spacing="10.0" style="-fx-border-color: #333333; -fx-border-width: 2; -fx-border-radius: 6; -fx-background-color: #f5f1e8; -fx-background-radius: 6;" GridPane.columnIndex="1" GridPane.valignment="TOP">
+                     <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </padding>
+                     <children>
+                        <Label style="-fx-font-weight: bold;" text="Difesa" />
+                        <Button fx:id="receiveButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onReceiveAttack" text="Incassa il colpo" wrapText="true" />
+                        <Button fx:id="defenseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onUseDefense" text="Difesa speciale" wrapText="true" />
+                     </children>
+                  </VBox>
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" spacing="10.0" style="-fx-border-color: #333333; -fx-border-width: 2; -fx-border-radius: 6; -fx-background-color: #f5f1e8; -fx-background-radius: 6;" GridPane.columnIndex="2" GridPane.valignment="TOP">
+                     <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </padding>
+                     <children>
+                        <Label style="-fx-font-weight: bold;" text="Donazione" />
+                        <Button fx:id="donateButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDonate" text="Dona il bottino" wrapText="true" />
+                     </children>
+                  </VBox>
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" spacing="10.0" style="-fx-border-color: #333333; -fx-border-width: 2; -fx-border-radius: 6; -fx-background-color: #f5f1e8; -fx-background-radius: 6;" GridPane.columnIndex="3" GridPane.valignment="TOP">
+                     <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </padding>
+                     <children>
+                        <Label style="-fx-font-weight: bold;" text="Ricompensa" />
+                        <Button fx:id="chooseRewardButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onChooseReward" text="Ricevi ricompensa" wrapText="true" />
+                     </children>
+                  </VBox>
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" spacing="10.0" style="-fx-border-color: #000000; -fx-border-width: 2; -fx-border-radius: 6; -fx-background-color: #f5f1e8; -fx-background-radius: 6;" GridPane.columnIndex="4" GridPane.valignment="TOP">
+                     <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </padding>
+                     <children>
+                        <Label style="-fx-font-weight: bold;" text="Inventario e avanzamento" />
+                        <Button fx:id="useItemButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onUseItem" text="Usa oggetto selezionato" wrapText="true" />
+                        <Button fx:id="nextButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onNextEncounter" text="Prossimo incontro" wrapText="true" />
+                     </children>
+                  </VBox>
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" spacing="10.0" style="-fx-border-color: #4776a8; -fx-border-width: 2; -fx-border-radius: 6; -fx-background-color: #e8f0fa; -fx-background-radius: 6;" GridPane.columnIndex="5" GridPane.valignment="TOP">
+                     <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </padding>
+                     <children>
+                        <Label style="-fx-font-weight: bold; -fx-text-fill: #244c78;" text="Salvataggio" />
+                        <Button fx:id="saveButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSave" text="Salva partita" wrapText="true" />
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" spacing="10.0" style="-fx-border-color: #333333; -fx-border-width: 2; -fx-border-radius: 6; -fx-background-color: #f5f1e8; -fx-background-radius: 6;" GridPane.columnIndex="1" GridPane.valignment="TOP">
                <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                  <Insets top="20.0" />
                </padding>
+            </GridPane>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label style="-fx-font-weight: bold;" text="Difesa" />
-                  <Button fx:id="receiveButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onReceiveAttack" text="Incassa il colpo" wrapText="true" />
-                  <Button fx:id="defenseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onUseDefense" text="Difesa speciale" wrapText="true" />
+                  <Button mnemonicParsing="false" onAction="#onAbandon" style="-fx-background-color: #f5b5b5; -fx-text-fill: #6e1717; -fx-font-weight: bold; -fx-background-radius: 6; -fx-padding: 10 20; -fx-border-color: #6e1717; -fx-border-width: 2; -fx-border-radius: 6;" text="Abbandona" />
                </children>
-            </VBox>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" spacing="10.0" style="-fx-border-color: #333333; -fx-border-width: 2; -fx-border-radius: 6; -fx-background-color: #f5f1e8; -fx-background-radius: 6;" GridPane.columnIndex="2" GridPane.valignment="TOP">
-               <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </padding>
-               <children>
-                  <Label style="-fx-font-weight: bold;" text="Donazione" />
-                  <Button fx:id="donateButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDonate" text="Dona il bottino" wrapText="true" />
-               </children>
-            </VBox>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" spacing="10.0" style="-fx-border-color: #333333; -fx-border-width: 2; -fx-border-radius: 6; -fx-background-color: #f5f1e8; -fx-background-radius: 6;" GridPane.columnIndex="3" GridPane.valignment="TOP">
-               <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </padding>
-               <children>
-                  <Label style="-fx-font-weight: bold;" text="Ricompensa" />
-                  <Button fx:id="chooseRewardButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onChooseReward" text="Ricevi ricompensa" wrapText="true" />
-               </children>
-            </VBox>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" spacing="10.0" style="-fx-border-color: #000000; -fx-border-width: 2; -fx-border-radius: 6; -fx-background-color: #f5f1e8; -fx-background-radius: 6;" GridPane.columnIndex="4" GridPane.valignment="TOP">
-               <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </padding>
-               <children>
-                  <Label style="-fx-font-weight: bold;" text="Inventario e avanzamento" />
-                  <Button fx:id="useItemButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onUseItem" text="Usa oggetto selezionato" wrapText="true" />
-                  <Button fx:id="nextButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onNextEncounter" text="Prossimo incontro" wrapText="true" />
-               </children>
-            </VBox>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" spacing="10.0" style="-fx-border-color: #4776a8; -fx-border-width: 2; -fx-border-radius: 6; -fx-background-color: #e8f0fa; -fx-background-radius: 6;" GridPane.columnIndex="5" GridPane.valignment="TOP">
-               <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </padding>
-               <children>
-                  <Label style="-fx-font-weight: bold; -fx-text-fill: #244c78;" text="Salvataggio" />
-                  <Button fx:id="saveButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSave" text="Salva partita" wrapText="true" />
-               </children>
-            </VBox>
+            </HBox>
          </children>
-         <padding>
-            <Insets top="20.0" />
-         </padding>
-      </GridPane>
+      </VBox>
    </bottom>
 </BorderPane>
