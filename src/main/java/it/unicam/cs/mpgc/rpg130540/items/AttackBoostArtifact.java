@@ -3,7 +3,8 @@ package it.unicam.cs.mpgc.rpg130540.items;
 import it.unicam.cs.mpgc.rpg130540.model.heroes.Hero;
 
 /**
- * Manufatto consumabile che aumenta permanentemente l'attacco dell'eroe.
+ * Classe astratta AttackBoostArtifact che rappresenta un manufatto consumabile che aumenta
+ * permanentemente l'attacco dell'eroe.
  * Le sottoclassi definiscono soltanto il nome mostrato al giocatore.
  */
 public abstract class AttackBoostArtifact implements Artifact {
@@ -13,7 +14,7 @@ public abstract class AttackBoostArtifact implements Artifact {
     private final int bonus;
 
     /**
-     * Crea il manufatto con il bonus di attacco indicato.
+     * Il costruttore crea il manufatto con il bonus di attacco indicato.
      *
      * @param bonus incremento permanente di attacco, maggiore di zero
      * @throws IllegalArgumentException se il bonus non è positivo

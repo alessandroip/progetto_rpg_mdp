@@ -3,7 +3,7 @@ package it.unicam.cs.mpgc.rpg130540.persistence;
 import java.io.IOException;
 
 /**
- * Definisce il contratto di memorizzazione e recupero dei dati di una partita,
+ * L'interfaccia SaveRepository definisce il contratto di memorizzazione e recupero dei dati di una partita,
  * senza imporre formato o supporto di archiviazione.
  */
 public interface SaveRepository {

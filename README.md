@@ -16,8 +16,8 @@ Dopo le vittorie, il giocatore dona il bottino al villaggio e riceve ricompense 
 - Gradle
 ### Istruzioni
 ```bash
-git clone <https://github.com/alessandroip/progetto_rpg_mdp.git>
-cd <progetto_rpg_mdp>
+git clone https://github.com/alessandroip/progetto_rpg_mdp.git
+cd progetto_rpg_mdp
 ```
 ### Build del progetto
 ```bash
@@ -30,20 +30,23 @@ cd <progetto_rpg_mdp>
 
 ## 🤖 Utilizzo di strumenti di AI
 
-Durante la realizzazione del progetto ho utilizzato **Gemini** per il ripasso iniziale dei concetti teorici e **ChatGPT** per il confronto sulle soluzioni, lo sviluppo e la documentazione.
+Durante la realizzazione del progetto ho utilizzato tre strumenti di AI, in momenti diversi:
 
-L’AI è stata utilizzata per:
+* **Gemini**, all'inizio, per il ripasso dei concetti teorici e degli strumenti;
+* **ChatGPT**, durante lo sviluppo, per chiarire concetti (Java, JavaFX, programmazione a oggetti,
+  SOLID, Jackson, FXML e Scene Builder), discutere l'organizzazione delle classi e le alternative
+  progettuali, proporre alternative e correzioni a porzioni di codice scritte da me,
+  interpretare errori di compilazione ed esecuzione e supportare la stesura delle JavaDoc;
+* **Claude**, nella fase finale, per la revisione del codice e della Wiki: ha segnalato difetti
+  e proposto miglioramenti e correzioni.
 
-- chiarire concetti relativi a Java, JavaFX, programmazione a oggetti e principi SOLID;
-- discutere l’organizzazione delle classi, le responsabilità e le possibili alternative progettuali;
-- proporre alternative e correzioni a porzioni di codice scritte dall'autore, spiegandone il funzionamento;
-- comprendere Jackson e supporto all'organizzazione della struttura di persistenza JSON;
-- sostegno nel collegare FXML e controller e aiuto tecnico sull’utilizzo di Scene Builder per comprendere gli elementi grafici da utilizzare;
-- interpretare errori di compilazione ed esecuzione;
-- aiuto nella stesura e revisione dei JavaDoc e dei testi della documentazione.
+L'ambientazione, le regole, la scelta dei protagonisti e la struttura del gioco sono state
+decise da me. Ho valutato ogni proposta, scartandone alcune, e ho inserito, adattato e provato
+manualmente le modifiche (compilazione, avvio, interfaccia, salvataggio e caricamento).
 
-Il codice è stato scritto, compreso, analizzato e testato personalmente. L'AI è stata utilizzata come supporto e
-sostegno allo studio e allo sviluppo e non come sostituto dell'attività progettuale e implementativa.
+L'AI è stata un supporto allo studio e allo sviluppo, non un sostituto
+dell'attività progettuale e implementativa.
+
 ## Risorse grafiche e crediti
 
 Le immagini dei personaggi, presenti nella cartella `src/main/resources/images/heroes/`, provengono da [Robin Hood di Kevin’s Mom’s House](https://kevins-moms-house.itch.io/robinhood), distribuito con licenza **CC0**.

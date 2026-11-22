@@ -18,7 +18,7 @@ import java.net.URL;
 import java.io.IOException;
 
 /**
- * Coordina la navigazione fra menu, scelta dell'eroe, partita e schermate finali. Delega la
+ * Classe SceneManager coordina la navigazione fra menu, scelta dell'eroe, partita e schermate finali. Delega la
  * creazione della partita e il caricamento ai componenti dedicati, mantenendo il modello
  * indipendente da JavaFX.
  */
@@ -37,7 +37,7 @@ public class SceneManager {
     private final GameSaveService saveService;
 
     /**
-     * Collega la finestra principale ai servizi necessari alla navigazione.
+     * Il costruttore collega la finestra principale ai servizi necessari alla navigazione.
      *
      * @param stage finestra principale fornita da JavaFX, non nulla
      * @param encounterFactory factory usata per creare gli incontri, non nulla

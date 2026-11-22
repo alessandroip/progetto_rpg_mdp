@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * Carica la scena FXML della partita e passa sessione, servizio di salvataggio
+ * La classe GameWindow carica la scena FXML della partita e passa sessione, servizio di salvataggio
  * e azioni finali al controller. Non crea una finestra Stage separata.
  */
 public class GameWindow {
@@ -38,7 +38,7 @@ public class GameWindow {
     private final Runnable onAbandon;
 
     /**
-     * Prepara i componenti necessari al caricamento della schermata di gioco.
+     * Il costruttore prepara i componenti necessari al caricamento della schermata di gioco.
      *
      * @param session partita da visualizzare, non nulla
      * @param saveService servizio di salvataggio, non nullo

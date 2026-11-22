@@ -12,7 +12,7 @@ import it.unicam.cs.mpgc.rpg130540.items.Blowpipe;
 import it.unicam.cs.mpgc.rpg130540.items.WildHealingPlant;
 
 /**
- * Ricostruisce eroe, inventario e sessione a partire da dati già validati.
+ * La classe SaveLoader ricostruisce eroe, inventario e sessione a partire da dati già validati.
  * Non legge file e non interpreta direttamente il JSON.
  */
 public class SaveLoader {
@@ -22,7 +22,7 @@ public class SaveLoader {
     private final EncounterFactory encounterFactory;
 
     /**
-     * Configura la ricostruzione delle sessioni con la factory ricevuta.
+     * Il costruttore configura la ricostruzione delle sessioni con la factory ricevuta.
      *
      * @param encounterFactory factory usata per creare gli incontri, non nulla
      * @throws IllegalArgumentException se la factory è nulla

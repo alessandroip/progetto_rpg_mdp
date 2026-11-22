@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * Collega i controlli FXML alla sessione e al servizio di salvataggio. Aggiorna la
+ * La classe GameController collega i controlli FXML alla sessione e al servizio di salvataggio. Aggiorna la
  * presentazione dopo le azioni senza calcolare direttamente danni, cure o ricompense.
  */
 public class GameController {

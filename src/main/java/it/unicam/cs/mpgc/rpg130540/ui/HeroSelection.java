@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.function.Consumer;
 
 /**
- * Carica la selezione dell'eroe e collega scelta del personaggio e ritorno al menu.
+ * La classe HeroSelection carica la selezione dell'eroe e collega scelta del personaggio e ritorno al menu.
  * Le immagini statiche delle schede sono definite nel file FXML.
  */
 public class HeroSelection {

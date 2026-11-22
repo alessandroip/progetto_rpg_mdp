@@ -4,7 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 
 /**
- * Gestisce le azioni dopo la sconfitta: nuova selezione dell'eroe, ritorno
+ * La classe GameOverController gestisce le azioni dopo la sconfitta: nuova selezione dell'eroe, ritorno
  * al menu e uscita. Ricominciare non ripristina il medesimo incontro e non
  * cancella il salvataggio.
  */

@@ -1,7 +1,7 @@
 package it.unicam.cs.mpgc.rpg130540.persistence;
 
 /**
- * Contiene identificativo e potenza di un manufatto salvato.
+ * La classe ItemSave contiene identificativo e potenza di un manufatto salvato.
  * È un contenitore di dati per Jackson, senza comportamento di utilizzo o accesso ai file.
  */
 public class ItemSave {

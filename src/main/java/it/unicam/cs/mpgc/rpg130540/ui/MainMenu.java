@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * Carica il menu FXML, configura il controller con le azioni ricevute e restituisce
+ * La classe MainMenu carica il menu FXML, configura il controller con le azioni ricevute e restituisce
  * la scena da mostrare.
  *
  * L’ordine è importante: loader.load() crea interfaccia e controller;

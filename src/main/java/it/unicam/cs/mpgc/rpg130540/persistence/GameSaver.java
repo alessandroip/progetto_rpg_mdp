@@ -10,7 +10,7 @@ import it.unicam.cs.mpgc.rpg130540.items.WildHealingPlant;
 import java.util.ArrayList;
 
 /**
- * Estrae dalla sessione i dati necessari al salvataggio. Converte eroe e manufatti nei
+ * Classe GameSaver che estrae dalla sessione i dati necessari al salvataggio. Converte eroe e manufatti nei
  * contenitori di persistenza, senza produrre JSON o scrivere file.
  */
 public class GameSaver {

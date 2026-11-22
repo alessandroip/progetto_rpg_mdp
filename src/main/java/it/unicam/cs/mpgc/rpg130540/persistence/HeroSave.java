@@ -3,7 +3,7 @@ package it.unicam.cs.mpgc.rpg130540.persistence;
 import java.util.List;
 
 /**
- * Contiene tipo, statistiche e inventario dell'eroe salvato.
+ * La classe HeroSave contiene tipo, statistiche e inventario dell'eroe salvato.
  * Abilità e difesa fisse vengono ricreate dal costruttore dell'eroe durante il caricamento.
  */
 public class HeroSave {

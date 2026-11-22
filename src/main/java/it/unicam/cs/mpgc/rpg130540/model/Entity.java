@@ -16,9 +16,9 @@ public abstract class Entity {
      * vuoto e un altro controllo sui punti vita massimi e sull'attacco che non possono
      * essere non positivi.
      *
-     * @param name          nome del personaggio
+     * @param name nome del personaggio
      * @param lifePointsMax punti vita massimi, maggiori di zero
-     * @param attack        valore dell'attacco base, maggiore di zero
+     * @param attack valore dell'attacco base, maggiore di zero
      * @throws IllegalArgumentException se il nome è nullo o privo di
      *                                  caratteri visibili, oppure se vita massima o attacco
      *                                  sono minori o uguali a zero

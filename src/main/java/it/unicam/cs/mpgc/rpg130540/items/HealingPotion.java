@@ -1,11 +1,13 @@
 package it.unicam.cs.mpgc.rpg130540.items;
 
 /**
- * Pozione curativa: recupera punti vita fino al massimo.
+ * Classe HealingPotion che recupera punti vita fino al massimo.
  */
 public class HealingPotion extends HealingArtifact {
 
     /**
+     * Il costruttore crea la pozione curativa.
+     *
      * @param healingPoints punti vita massimi recuperabili, maggiore di zero
      * @throws IllegalArgumentException se la cura non è positiva
      */

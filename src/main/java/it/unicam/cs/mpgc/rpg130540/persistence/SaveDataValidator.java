@@ -8,7 +8,7 @@ import it.unicam.cs.mpgc.rpg130540.model.heroes.RobinHood;
 import java.util.List;
 
 /**
- * Verifica la coerenza dei dati salvati con le regole attuali prima della ricostruzione. Non
+ * La classe SaveDataValidator verifica la coerenza dei dati salvati con le regole attuali prima della ricostruzione. Non
  * dimostra che i valori siano stati ottenuti mediante una sequenza autentica di azioni di gioco.
  */
 public class SaveDataValidator {
@@ -19,7 +19,7 @@ public class SaveDataValidator {
     private final EncounterFactory encounterFactory;
 
     /**
-     * Configura il validatore con la factory che definisce i livelli disponibili.
+     * Il costruttore configura il validatore con la factory che definisce i livelli disponibili.
      *
      * @param encounterFactory factory usata per creare gli incontri, non nulla
      * @throws IllegalArgumentException se la factory è nulla

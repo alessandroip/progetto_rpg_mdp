@@ -3,7 +3,8 @@ package it.unicam.cs.mpgc.rpg130540.items;
 import it.unicam.cs.mpgc.rpg130540.model.heroes.Hero;
 
 /**
- * Manufatto consumabile che recupera punti vita senza superare il massimo.
+ * Classe astratta HealingArtifact che crea un manufatto consumabile che recupera
+ * punti vita senza superare il massimo.
  * Non è utilizzabile su un eroe sconfitto o già a vita piena. Le sottoclassi
  * definiscono soltanto il nome mostrato al giocatore.
  */
@@ -15,7 +16,7 @@ public abstract class HealingArtifact implements Artifact {
 
 
     /**
-     * Crea il manufatto con la quantità di cura indicata.
+     * Il costruttore crea il manufatto con la quantità di cura indicata.
      *
      * @param healingPoints punti vita massimi recuperabili, maggiore di zero
      * @throws IllegalArgumentException se la cura non è positiva

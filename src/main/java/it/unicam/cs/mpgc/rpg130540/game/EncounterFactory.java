@@ -24,7 +24,7 @@ public class EncounterFactory {
     private static final int LOOT_COINS = 10;
 
     /**
-     * Crea il nemico del livello richiesto e un incontro con dieci monete di bottino.
+     * Il costruttore crea il nemico del livello richiesto e un incontro con dieci monete di bottino.
      *
      * @param level livello da creare, compreso tra uno e cinque
      * @return nuovo incontro con un nuovo nemico

@@ -4,7 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 
 /**
- * Gestisce i pulsanti del menu principale eseguendo le azioni configurate
+ * Classe MainMenuController gestisce i pulsanti del menu principale eseguendo le azioni configurate
  * dall'applicazione. Non implementa le regole di creazione o caricamento della partita.
  */
 public class MainMenuController {

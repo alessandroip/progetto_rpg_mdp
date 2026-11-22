@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Legge e scrive SaveData nel file save.json usando Jackson. Il percorso è relativo alla cartella
+ * La classe SaveManager legge e scrive SaveData nel file save.json usando Jackson. Il percorso è relativo alla cartella
  * di lavoro e la scrittura sostituisce direttamente il file esistente, senza file temporaneo.
  */
 public class SaveManager implements SaveRepository {

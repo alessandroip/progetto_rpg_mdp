@@ -4,7 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 
 /**
- * Gestisce ritorno al menu e uscita dopo la vittoria finale, raggiunta con
+ * La classe VictoryController gestisce ritorno al menu e uscita dopo la vittoria finale, raggiunta con
  * la donazione del bottino dell'ultimo incontro.
  */
 public class VictoryController {

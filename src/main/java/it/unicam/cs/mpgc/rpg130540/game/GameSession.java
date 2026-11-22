@@ -56,7 +56,7 @@ public class GameSession {
     private List<Artifact> rewardOptions = new ArrayList<>();
 
     /**
-     * Questo costruttore crea una nuova sessione dal primo livello con l'eroe fornito.
+     * Il primo costruttore crea una nuova sessione dal primo livello con l'eroe fornito.
      * Non azzera l'inventario né ripristina automaticamente le statistiche dell'eroe ricevuto.
      *
      * @param hero eroe coinvolto, non nullo
@@ -73,7 +73,7 @@ public class GameSession {
     }
 
     /**
-     * Quest'altro costruttore ricostruisce una sessione tra due incontri. Crea il nemico
+     * Il secondo costruttore ricostruisce una sessione tra due incontri. Crea il nemico
      * del livello già completato, lo marca come sconfitto e ripristina l'onore senza
      * assegnare di nuovo bottino o ricompense.
      *
@@ -192,7 +192,7 @@ public class GameSession {
     }
 
     /**
-     * Restituisce l’informazione corrente della sessione.
+     * Restituisce la fase del combattimento corrente.
      *
      * @return fase interna del combattimento corrente
      */
@@ -251,7 +251,7 @@ public class GameSession {
     }
 
     /**
-     * Restituisce l’informazione corrente della sessione.
+     * Restituisce i nomi delle ricompense tra cui il giocatore può scegliere.
      *
      * @return nuova lista dei nomi delle ricompense disponibili
      */
@@ -264,7 +264,7 @@ public class GameSession {
     }
 
     /**
-     * Restituisce l’informazione corrente della sessione.
+     * Restituisce i nomi dei manufatti posseduti dall'eroe.
      *
      * @return nuova lista dei nomi dei manufatti posseduti
      */
@@ -294,7 +294,7 @@ public class GameSession {
     }
 
     /**
-     * Restituisce la disponibilità dell’azione richiesta.
+     * Indica se la partita può essere salvata in questo momento.
      *
      * @return true soltanto durante BETWEEN_ENCOUNTERS, dopo la scelta della ricompensa
      */
@@ -303,7 +303,7 @@ public class GameSession {
     }
 
     /**
-     * Restituisce la disponibilità dell’azione richiesta.
+     * Indica se l'eroe può usare ora l'abilità speciale.
      *
      * @return true se la sessione è FIGHTING e il combattimento consente l’abilità
      */
@@ -312,7 +312,7 @@ public class GameSession {
     }
 
     /**
-     * Restituisce la disponibilità dell’azione richiesta.
+     * Indica se l'eroe può usare ora la difesa speciale.
      *
      * @return true se la sessione è FIGHTING e il combattimento consente la difesa
      */
@@ -321,7 +321,7 @@ public class GameSession {
     }
 
     /**
-     * Restituisce l’informazione corrente della sessione.
+     * Restituisce i manufatti posseduti dall'eroe, in una nuova lista.
      *
      * @return nuova lista contenente gli stessi riferimenti ai manufatti posseduti
      */

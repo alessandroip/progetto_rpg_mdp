@@ -1,7 +1,7 @@
 package it.unicam.cs.mpgc.rpg130540.persistence;
 
 /**
- * Raccoglie i dati dell'eroe e la progressione di una partita salvata tra due incontri. La
+ * La classe SaveData raccoglie i dati dell'eroe e la progressione di una partita salvata tra due incontri. La
  * coerenza dei valori è controllata da SaveDataValidator prima della ricostruzione.
  */
 public class SaveData {
@@ -30,7 +30,7 @@ public class SaveData {
     }
 
     /**
-     * Raccoglie i dati di una partita usando la versione uno del formato. Non esegue la
+     * Il costruttore raccoglie i dati di una partita usando la versione uno del formato. Non esegue la
      * validazione delle regole di gioco.
      *
      * @param hero contenitore dei dati dell'eroe

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Gestisce onore e bottino da donare e crea le opzioni di ricompensa attualmente disponibili.
+ * La classe Rewards gestisce onore e bottino da donare e crea le opzioni di ricompensa attualmente disponibili.
  * GameSession controlla l'ordine delle fasi e impedisce assegnazioni ripetute tramite le azioni
  * della partita.
  */

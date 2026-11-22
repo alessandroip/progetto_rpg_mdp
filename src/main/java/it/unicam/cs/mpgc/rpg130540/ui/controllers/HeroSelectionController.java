@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 import java.util.function.Consumer;
 
 /**
- * Mostra statistiche, abilità e difesa dei due eroi e comunica il personaggio
+ * La classe HeroSelectionController mostra statistiche, abilità e difesa dei due eroi e comunica il personaggio
  * scelto. Ogni nuovo controller prepara nuove istanze dei protagonisti.
  */
 public class HeroSelectionController {
