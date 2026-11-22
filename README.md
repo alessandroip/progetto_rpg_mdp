@@ -1,20 +1,23 @@
 # 📌 Robin Hood RPG
-Breve descrizione del progetto (2-3 righe):  
-Spiega cosa fa il programma e a cosa serve.
 
-Robin Hood e Little John vanno in giro per la foresta. Ad un certo punto si imbattono in un villaggio
-dove i sudditi del re sono molto poveri a causa delle alte tasse. Quindi, decidono di dare una mano
-ai sudditi rubando il bottino del re e redistribuirlo, ma per farlo devono affrontare dei combattimenti sempre più
-faticosi contro i protettori del re.
----
+Robin Hood RPG è un gioco di ruolo a turni sviluppato in Java con interfaccia grafica JavaFX.
+
+Il giocatore sceglie tra Robin Hood e Little John e affronta cinque incontri contro nemici con 
+caratteristiche differenti, fino allo scontro con il re. Ogni eroe possiede un’abilità e una difesa 
+speciale utilizzabili una volta per incontro.
+
+Dopo le vittorie, il giocatore dona il bottino al villaggio e riceve ricompense da conservare nell’inventario. 
+È possibile salvare i progressi tra gli incontri e riprendere successivamente la partita.
+
 ## 🚀 Come eseguire il progetto
+
 ### Prerequisiti
 - Java 25 (LTS)
 - Gradle
 ### Istruzioni
 ```bash
-git clone <url-del-repository>
-cd <nome-cartella>
+git clone <https://github.com/alessandroip/progetto_rpg_mdp.git>
+cd <progetto_rpg_mdp>
 ```
 ### Build del progetto
 ```bash
@@ -24,29 +27,29 @@ cd <nome-cartella>
 ```bash
 ./gradlew run
 ```
----
-## 🤖 Uso di strumenti di AI
-Indicare **se e come** sono stati utilizzati strumenti di AI (es. ChatGPT, Copilot, ecc.).
-Descrivere in modo chiaro **per quali attività** e **con quale livello di intervento personale**.
-È importante dimostrare che:
-* il codice è stato **compreso**
-* l’AI è stata usata come **supporto**, non come sostituto
----
-📌 Per una descrizione più dettagliata dell’uso dell’AI, utilizzare la **Wiki del repository**.
-### Esempi :
-* Utilizzato ChatGPT per:
-    * comprendere concetti teorici (es. differenza tra classi e oggetti)
-    * chiarire errori di compilazione
-    * suggerimenti su struttura del codice
-* Utilizzato Copilot per:
-    * autocompletamento di metodi semplici
-    * generazione di codice ripetitivo (es. getter/setter)
-* Utilizzato ChatGPT per generare una prima versione di una funzione, poi:
-    * modificata e adattata manualmente
-    * testata e corretta personalmente
----
-Oppure:
-- Non sono stati utilizzati strumenti di AI
----
-## ⚠️ Nota
-Questo è un template: **modificare e adattare tutte le parti necessarie** in base al proprio progetto
+
+## 🤖 Utilizzo di strumenti di AI
+
+Durante la realizzazione del progetto ho utilizzato **Gemini** per il ripasso iniziale dei concetti teorici e **ChatGPT** per il confronto sulle soluzioni, lo sviluppo e la documentazione.
+
+L’AI è stata utilizzata per:
+
+- chiarire concetti relativi a Java, JavaFX, programmazione a oggetti e principi SOLID;
+- discutere l’organizzazione delle classi, le responsabilità e le possibili alternative progettuali;
+- proporre alternative e correzioni a porzioni di codice scritte dall'autore, spiegandone il funzionamento;
+- comprendere Jackson e supporto all'organizzazione della struttura di persistenza JSON;
+- sostegno nel collegare FXML e controller e aiuto tecnico sull’utilizzo di Scene Builder per comprendere gli elementi grafici da utilizzare;
+- interpretare errori di compilazione ed esecuzione;
+- aiuto nella stesura e revisione dei JavaDoc e dei testi della documentazione.
+
+Il codice è stato scritto, compreso, analizzato e testato personalmente. L'AI è stata utilizzata come supporto e
+sostegno allo studio e allo sviluppo e non come sostituto dell'attività progettuale e implementativa.
+## Risorse grafiche e crediti
+
+Le immagini dei personaggi, presenti nella cartella `src/main/resources/images/heroes/`, provengono da [Robin Hood di Kevin’s Mom’s House](https://kevins-moms-house.itch.io/robinhood), distribuito con licenza **CC0**.
+
+Le immagini non sono state generate tramite strumenti di intelligenza artificiale.
+
+## Documentazione
+
+La [Wiki del progetto](https://github.com/alessandroip/progetto_rpg_mdp/wiki) descrive le funzionalità, l’organizzazione delle classi, il combattimento, la persistenza e i meccanismi di estensione.
