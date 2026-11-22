@@ -5,7 +5,7 @@ import it.unicam.cs.mpgc.rpg130540.game.GameSession;
 import java.io.IOException;
 
 /**
- * Coordina coordina conversione, validazione e accesso al salvataggio. Durante il caricamento
+ * Coordina conversione, validazione e accesso al salvataggio. Durante il caricamento
  * valida i dati prima di ricostruire una nuova sessione.
  */
 public class GameSaveService {

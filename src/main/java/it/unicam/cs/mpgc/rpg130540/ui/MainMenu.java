@@ -31,7 +31,7 @@ public class MainMenu {
         URL resource = getClass().getResource("/fxml/MainMenu.fxml");
 
         if (resource == null) {
-            throw new IllegalStateException("File /fxml/MainMEnu.fxml non trovato");
+            throw new IllegalStateException("File /fxml/MainMenu.fxml non trovato");
         }
         FXMLLoader loader = new FXMLLoader(resource);
 

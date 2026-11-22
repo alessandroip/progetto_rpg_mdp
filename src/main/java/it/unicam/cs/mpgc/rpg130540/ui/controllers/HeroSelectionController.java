@@ -15,19 +15,19 @@ import java.util.function.Consumer;
  */
 public class HeroSelectionController {
     /**
-     *
+     * Istanza di Robin Hood mostrata nella scheda e restituita se viene scelto.
      */
     private final Hero robinHood = new RobinHood();
     /**
-     *
+     * Istanza di Little John mostrata nella scheda e restituita se viene scelto.
      */
     private final Hero littleJohn = new LittleJohn();
     /**
-     *
+     * Azione da eseguire quando il giocatore torna al menu.
      */
     private Runnable onBackToMenu;
     /**
-     *
+     * Azione che riceve l'eroe scelto dal giocatore.
      */
     private Consumer<Hero> onHeroSelected;
 
