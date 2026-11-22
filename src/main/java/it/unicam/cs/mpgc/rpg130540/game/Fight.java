@@ -6,6 +6,8 @@ import it.unicam.cs.mpgc.rpg130540.model.enemies.Enemy;
 import it.unicam.cs.mpgc.rpg130540.abilities.Ability;
 import it.unicam.cs.mpgc.rpg130540.model.enemies.EnemyAttack;
 
+import java.util.Objects;
+
 /**
  * Classe Fight che gestisce un singolo combattimento con azione dell'eroe e scelta
  * difensiva contro il colpo annunciato. Consente un uso dell'abilità speciale e
@@ -47,8 +49,8 @@ public class Fight {
      * @throws NullPointerException se uno dei partecipanti è nullo
      */
     public Fight(Hero hero, Enemy enemy) {
-        this.hero = hero;
-        this.enemy = enemy;
+        this.hero = Objects.requireNonNull(hero, "L'eroe non può essere nullo");
+        this.enemy = Objects.requireNonNull(enemy, "Il nemico non può essere nullo");
         if (isEnded()) {
             this.turnPhase = TurnPhase.ENDED;
         } else {
