@@ -19,6 +19,11 @@ public class EncounterFactory {
     private static final int LAST_LEVEL = 5;
 
     /**
+     * Monete di bottino assegnate da ogni incontro.
+     */
+    private static final int LOOT_COINS = 10;
+
+    /**
      * Crea il nemico del livello richiesto e un incontro con dieci monete di bottino.
      *
      * @param level livello da creare, compreso tra uno e cinque
@@ -46,7 +51,7 @@ public class EncounterFactory {
             default:
                 throw new IllegalArgumentException("Livello non disponibile");
         }
-        return new Encounter(enemy, 10);
+        return new Encounter(enemy, LOOT_COINS);
     }
 
     /**
